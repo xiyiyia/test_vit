@@ -57,11 +57,6 @@ A tensorflow2 translation also exists <a href="https://github.com/taki0112/vit-t
 
 <a href="https://github.com/conceptofmind/vit-flax">Flax translation</a> by <a href="https://github.com/conceptofmind">Enrico Shippole</a>!
 
-## Install
-
-```bash
-$ pip install vit-pytorch
-```
 
 ## Usage
 
