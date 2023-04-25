@@ -24,11 +24,11 @@ import pandas as pd
 import csv
 import time
 
-from models import *
+# from models import *
 from utils import progress_bar
-from randomaug import RandAugment
-from models.vit import ViT
-from models.convmixer import ConvMixer
+# from randomaug import RandAugment
+from vit_pytorch import ViT
+# from models.convmixer import ConvMixer
 
 # parsers
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
@@ -81,9 +81,9 @@ transform_test = transforms.Compose([
 ])
 
 # Add RandAugment with N, M(hyperparameter)
-if aug:  
-    N = 2; M = 14;
-    transform_train.transforms.insert(0, RandAugment(N, M))
+# if aug:  
+#     N = 2; M = 14;
+#     transform_train.transforms.insert(0, RandAugment(N, M))
 
 # Prepare dataset
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform_train)
@@ -263,6 +263,8 @@ def train(epoch):
 
         progress_bar(batch_idx, len(trainloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
             % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
+        
+        # break
     return train_loss/(batch_idx+1)
 
 ##### Validation
@@ -285,7 +287,8 @@ def test(epoch):
 
             progress_bar(batch_idx, len(testloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
                 % (test_loss/(batch_idx+1), 100.*correct/total, correct, total))
-    
+
+            # break
     # Save checkpoint.
     acc = 100.*correct/total
     if acc > best_acc:
@@ -307,8 +310,8 @@ def test(epoch):
 
 list_loss = []
 list_acc = []
-    
-net.cuda()
+if torch.cuda.is_available():
+    net.cuda()
 for epoch in range(start_epoch, args.n_epochs):
     start = time.time()
     trainloss = train(epoch)
