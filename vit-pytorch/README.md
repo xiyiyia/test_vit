@@ -1,6 +1,10 @@
 ## Training Vit on Cifar10
 
 ```
+pip install pandas
+pip install einops
+```
+```
 python train_cifar10.py --n_epochs 500 --lr 1e-3
 ```
 epochs 500: acc 88%
