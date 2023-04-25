@@ -1,3 +1,11 @@
+## Training Vit on Cifar10
+
+```
+python train_cifar10.py --n_epochs 500 --lr 1e-3
+```
+epochs 500: acc 88%
+epochs 200: acc 80%
+
 <img src="./images/vit.gif" width="500px"></img>
 
 ## Table of Contents
