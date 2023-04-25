@@ -7,8 +7,11 @@ pip install einops
 ```
 python train_cifar10.py --n_epochs 500 --lr 1e-3
 ```
-epochs 500: acc 88%
-epochs 200: acc 80%
+epochs 500: acc 88%.
+epochs 200: acc 80%.
+
+-`log`: record loss and acc per epoch.
+-`checkpoint`: save the ckecpoint while training complete.
 
 <img src="./images/vit.gif" width="500px"></img>
 
